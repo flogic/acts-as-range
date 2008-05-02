@@ -1,0 +1,73 @@
+<% t = FixedTime.time %>
+surrounding_year:
+  id: 1
+  title: 'this surrounding year'
+  begin_date:  <%= 6.months.ago(t).to_s :db %>
+  end_date:  <%= 6.months.from_now(t).to_s :db %>
+open_beginning_past:
+  id: 2
+  title: 'open beginning but already past'
+  end_date:  <%= 1.year.ago(t).to_s :db %>
+open_beginning_future:
+  id: 3
+  title: 'open beginning into the future'
+  end_date:  <%= 1.year.from_now(t).to_s :db %>
+open_ending_past:
+  id: 4
+  title: 'from last year until forever'
+  begin_date:  <%= 1.year.ago(t).to_s :db %>
+open_ending_future:
+  id: 5
+  title: 'from next year until forever'
+  begin_date:  <%= 1.year.from_now(t).to_s :db %>
+open:
+  id: 6
+  title: 'the alpha + omega, etc., etc.'
+closed_past:
+  id: 7
+  title: 'closed interval in the past'
+  begin_date:  <%= 2.years.ago(t).to_s :db %>
+  end_date:  <%= 1.year.ago(t).to_s :db %>
+closed_future:
+  id: 8
+  title: 'closed interval in the future'
+  begin_date:  <%= 1.years.from_now(t).to_s :db %>
+  end_date:  <%= 2.years.from_now(t).to_s :db %> 
+open_starting_now:
+  id: 9
+  title: 'open interval, starting now'
+  begin_date: <%= t.to_s :db %>
+open_ending_now:
+  id: 10
+  title: 'open interval, ending now'
+  end_date: <%= t.to_s :db %>
+closed_starting_now:
+  id: 11
+  title: 'closed interval, starting now'
+  begin_date: <%= t.to_s :db %>
+  end_date:  <%= 1.year.from_now(t).to_s :db %>
+closed_ending_now:
+  id: 12
+  title: 'closed interval, ending now'
+  begin_date:  <%= 1.year.ago(t).to_s :db %>
+  end_date: <%= t.to_s :db %>
+containing:
+  id: 13
+  title: 'I contain you'
+  begin_date: <%= 3.years.from_now(t).to_s :db %>
+  end_date: <%= 6.years.from_now(t).to_s :db %>
+contained:
+  id: 14
+  title: 'I am contained'
+  begin_date: <%= 4.years.from_now(t).to_s :db %>
+  end_date: <%= 5.years.from_now(t).to_s :db %>
+intersecting:
+  id: 15
+  title: 'I will overlap'
+  begin_date: <%= 5.years.ago(t).to_s :db %>
+  end_date: <%= 3.years.ago(t).to_s :db %>
+intersected:
+  id: 16
+  title: 'I will be overlapped'
+  begin_date: <%= 6.years.ago(t).to_s :db %>
+  end_date: <%= 4.years.ago(t).to_s :db %>

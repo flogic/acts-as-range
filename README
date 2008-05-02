@@ -1,0 +1,43 @@
+= acts_as_range was originally derived from acts_as_paranoid
+
+= acts_as_range, acts_as_end_dated
+
+Provides date range support methods to ActiveRecord models.
+
+add new options to Foo.find:
+    :contain      => t1 .. t2 - return objects whose spans contain this time interval
+    :contained_by => t1 .. t2 - return objects whose spans are contained by this time interval
+    :overlapping  => t1 .. t2 - return objects whose spans overlap this time interval
+    :on           => t1       - return objects whose spans contain this time point
+    :before       => t1       - return objects whose spans are completed on or before this time point
+    :after        => t1       - return objects whose spans begin on or after this time point 
+
+Note that each of the time interval methods will also take an object of this
+class and will use the time interval from that object as search parameters.
+
+The acts_as_range class method takes a hash as a parameters, the values it uses are
+  :begin   => The column name that represents the start time of the interval(Defaults :begin_date)
+  :end     => The column name that represents the end time of the interval(Defaults :end_date),
+  :default => A proc you'd like to constrain the default time used in finds to(ActiveRecord::Base.end_dated_association_date = Proc.new { 1.day.ago }
+
+The acts_as_end_dated class method works similarly to acts_as_range, but it
+excludes end dated models from find results.  So if the column that the :end
+parameter maps to above has a date in the past, it will not be found by the
+default search
+
+We also define an instance method which will scope queries to the date range for that object:
+
+  object.limit_date_range do
+    object.friends.enemies  # the find()s of any date_ranged / end_dated classes are limited to :overlaps => object
+  end
+
+== Resources
+
+Install
+
+* gem install acts_as_range
+
+Subversion
+
+*  svn://svn.caboo.se/plugins/atmos/acts_as_range
+

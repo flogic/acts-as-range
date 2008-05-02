@@ -1,0 +1,7 @@
+ * (30 Jun 2006) Foo.find now knows :on => time_point, :overlapping => t1 .. t2, :contained_by => t1 .. t2, :contain => t1 .. t2
+
+ * (19 Jun 2006) Miscellaneous documentation updates.  At some point the name was changed to acts_as_range.
+
+ * (15 May 2006)
+ port acts as paranoid to acts_as_end_dateable for centerstone usage.
+

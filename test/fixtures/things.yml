@@ -1,0 +1,27 @@
+<% t = FixedTime.time %>
+current:
+  id: 1
+  title: 'current'
+  start: <%= 6.months.ago.to_s :db %>
+  stop: <%= 6.months.from_now(t).to_s :db %>
+future:
+  id: 2
+  title: 'future'
+  start: <%= 6.months.from_now(t).to_s :db %> 
+past:
+  id: 3
+  title: 'past'
+  stop: <%= 6.months.ago(t).to_s :db %>
+way_future:
+  id: 4
+  title: way future
+  start: <%= 4.years.from_now(t).to_s :db %>
+past:
+  id: 5
+  title: 'way past'
+  stop: <%= 4.years.ago(t).to_s :db %>
+shortly_after_now:
+  id: 6
+  title: 'shortly after now'
+  start: <%= 1.months.from_now.to_s :db %>
+  stop: <%= 3.months.from_now(t).to_s :db %>  

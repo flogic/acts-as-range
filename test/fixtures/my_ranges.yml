@@ -1,0 +1,73 @@
+<% t = FixedTime.time %>
+surrounding_year:
+  id: 1
+  title: 'this surrounding year'
+  begin:  <%= 6.months.ago(t).to_i %>
+  end:  <%= 6.months.from_now(t).to_i %>
+open_beginning_past:
+  id: 2
+  title: 'open beginning but already past'
+  end:  <%= 1.year.ago(t).to_i %>
+open_beginning_future:
+  id: 3
+  title: 'open beginning into the future'
+  end:  <%= 1.year.from_now(t).to_i %>
+open_ending_past:
+  id: 4
+  title: 'from last year until forever'
+  begin:  <%= 1.year.ago(t).to_i %>
+open_ending_future:
+  id: 5
+  title: 'from next year until forever'
+  begin:  <%= 1.year.from_now(t).to_i %>
+open:
+  id: 6
+  title: 'the alpha + omega, etc., etc.'
+closed_past:
+  id: 7
+  title: 'closed interval in the past'
+  begin:  <%= 2.years.ago(t).to_i %>
+  end:  <%= 1.year.ago(t).to_i %>
+closed_future:
+  id: 8
+  title: 'closed interval in the future'
+  begin:  <%= 1.years.from_now(t).to_i %>
+  end:  <%= 2.years.from_now(t).to_i %> 
+open_starting_now:
+  id: 9
+  title: 'open interval, starting now'
+  begin: <%= t.to_i %>
+open_ending_now:
+  id: 10
+  title: 'open interval, ending now'
+  end: <%= t.to_i %>
+closed_starting_now:
+  id: 11
+  title: 'closed interval, starting now'
+  begin: <%= t.to_i %>
+  end:  <%= 1.year.from_now(t).to_i %>
+closed_ending_now:
+  id: 12
+  title: 'closed interval, ending now'
+  begin:  <%= 1.year.ago(t).to_i %>
+  end: <%= t.to_i %>
+containing:
+  id: 13
+  title: 'I contain you'
+  begin: <%= 3.years.from_now(t).to_i %>
+  end: <%= 6.years.from_now(t).to_i %>
+contained:
+  id: 14
+  title: 'I am contained'
+  begin: <%= 4.years.from_now(t).to_i %>
+  end: <%= 5.years.from_now(t).to_i %>
+intersecting:
+  id: 15
+  title: 'I will overlap'
+  begin: <%= 5.years.ago(t).to_i %>
+  end: <%= 3.years.ago(t).to_i %>
+intersected:
+  id: 16
+  title: 'I will be overlapped'
+  begin: <%= 6.years.ago(t).to_i %>
+  end: <%= 4.years.ago(t).to_i %>
